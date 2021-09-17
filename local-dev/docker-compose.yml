@@ -23,7 +23,7 @@ services:
   backend-node:
     depends_on:
       - mongo
-    buid:
+    build:
       context: '../backend-node'
     ports:
       - '8081:3000'

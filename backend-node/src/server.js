@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000
 const app = express()
 
 app.get("/", (req, res) => {
-    res.send("Hello World")
+    res.send("Hello World test")
 })
 
 mongoose
@@ -14,7 +14,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`))
+    app.listen(PORT, () => console.log(`test Server started on PORT ${PORT}`))
   })
   .catch((err) => {
     console.log(err)
