@@ -22,6 +22,9 @@ function Home() {
 
     return (
         <div>
+            <Link to="categories">
+                <button>Vaata kategooriaid</button>
+            </Link>
             <Link to="add-item">
                 <button>Lisa uus ese</button>
             </Link>
