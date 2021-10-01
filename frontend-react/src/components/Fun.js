@@ -4,7 +4,7 @@ function Fun({ magicNumber, setMagicNumber, amount = 1, show, setShow }) {
     const [counter, setCounter] = useState(0)
 
     const addNumber = () => {
-        setCounter(counter +1)
+        setCounter(counter + 1)
     }
 
     const increaseMagicNumber = () => {

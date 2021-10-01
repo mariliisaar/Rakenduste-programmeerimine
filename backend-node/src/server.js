@@ -2,7 +2,13 @@ const express = require('express')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3000
 
+const itemRoutes = require('./routes/item');
+
 const app = express()
+
+app.use(express.json());
+
+app.use('/api/item', itemRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello World test")
