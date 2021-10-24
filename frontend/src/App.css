@@ -1,3 +1,74 @@
+.main {
+  width: 90%;
+  margin: 30px auto;
+}
+
 h1 {
-  text-align: center;
+  position: relative;
+  text-align: left;
+  color: #12a7a7;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 15%;
+  height: 1px;
+  background: linear-gradient(to right, #ff00ff, #00ffff);
+}
+
+.link a {
+  display: inline-flex;
+  align-items: center;
+  color: #530e6e;
+  border: solid 2px transparent;
+  padding: 5px;
+}
+
+.link img {
+  margin-right: 5px;
+}
+
+.link a:link, .link a:visited {
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.link a:link::before, .link a:visited::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, #ff00ff, #00ffff);
+}
+
+.link a:hover, .link a:active, link a:focus {
+  position: relative;
+  box-sizing: border-box;
+  border: solid 2px transparent;
+  background: #fff;
+  background-clip: padding-box;
+  border-radius: 5px;
+}
+
+.link a:hover::before, .link a:active::before, link a:focus::before {
+  background: none;
+}
+
+.link a:hover::after, .link a:active::after, link a:focus::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -2px;
+  border-radius: inherit;
+  background: linear-gradient(to bottom right, #ff00ff, #00ffff);
 }

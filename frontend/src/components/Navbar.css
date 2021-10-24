@@ -1,12 +1,80 @@
 .navbar {
-    background-color: rgb(137, 47, 165);
-    height: 150px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #ff00ff, #00ffff);
+}
+
+.logo-row {
+    width: 98%;
+    padding: 0 1%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgb(27, 27, 27);
+    /* background: linear-gradient(to right, rgb(255, 255, 255), rgb(27, 27, 27) 3%, rgb(27, 27, 27) 97%, rgb(255, 255, 255)); */
+}
+
+.nav-row {
+    width: 96%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav-row a {
+    padding: 0 10px;
+    font-size: 18px;
+    text-decoration: none;
+    border: solid 2px transparent;
+}
+
+.nav-row a:link, .nav-row a:visited {
+    color: #530e6e;
+}
+
+.nav-row a:hover, .nav-row a:active, .nav-row a:focus {
+    cursor: pointer;
+    color: #12a7a7;
+    position: relative;
+    box-sizing: border-box;
+    border: solid 2px transparent;
+    background: #fff;
+    background-clip: padding-box;
+    border-radius: 5px 5px 0 0;
+}
+
+.nav-row a:hover::after, .nav-row a:active::after, .nav-row a:focus::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -2px;
+    border-radius: inherit;
+    background: linear-gradient(to right, #ff00ff, #00ffff);
+}
+
+.nav-row a:first-child {
+    margin-left: -10px;
+}
+
+.nav-row a:last-child {
+    margin-right: -10px;
 }
 
 .cart {
-    height: 50px;
-    margin: 50px;
+    height: 40px;
 }

@@ -1,4 +1,4 @@
-import './AddItemForm.css';
+import './AddForm.css';
 import { useRef } from 'react';
 
 function AddCategoryForm(props) {

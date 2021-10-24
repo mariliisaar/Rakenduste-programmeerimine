@@ -8,11 +8,11 @@ function AddItem() {
             headers: {
                 'Content-Type':'application/json'
             }
-        });
+        }).then(res => ( res.status === 200 ? window.location.href = 'http://localhost:3000/' : ''));
     }
 
     return(
-        <div>
+        <div className="main">
             <h1>Lisa uus ese</h1>
             <AddItemForm onAddItem={itemSubmitHandler} />
         </div>

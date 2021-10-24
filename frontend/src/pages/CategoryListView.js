@@ -21,10 +21,14 @@ function CategoryListView() {
     }
 
     return (
-        <div>
-            <Link to="add-category">
-                <button>Lisa uus kategooria</button>
-            </Link>
+        <div className="main">
+            <h1>Kategooriad</h1>
+            <div className="link">
+                <Link to="add-category">
+                    <img src="plus.svg" alt="add" />
+                    Lisa uus kategooria
+                </Link>
+            </div>
             <CategoryList categories={loadedCategories} />
         </div>
     )

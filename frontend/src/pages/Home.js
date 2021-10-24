@@ -21,13 +21,14 @@ function Home() {
     }
 
     return (
-        <div>
-            <Link to="categories">
-                <button>Vaata kategooriaid</button>
-            </Link>
-            <Link to="add-item">
-                <button>Lisa uus ese</button>
-            </Link>
+        <div className="main">
+            <h1>Esemed</h1>
+            <div className="link">
+                <Link to="add-item">
+                    <img src="plus.svg" alt="add" />
+                    Lisa uus ese
+                </Link>
+            </div>
             <ItemList items={loadedItems} />
         </div>
     )

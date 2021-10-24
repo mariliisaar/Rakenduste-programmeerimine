@@ -1,6 +1,11 @@
+import './Category.css';
+
 function Category(props) {
     return (
-        <div className="categoryName">{ props.name } (<span className="categoryType">{ props.type }</span>)</div>
+        <div className="wrapper">
+            <div className="categoryName">{ props.name }</div>
+            <div className="categoryType">({ props.type })</div>
+        </div>
     )
 }
 
