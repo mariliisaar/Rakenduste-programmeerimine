@@ -1,5 +1,9 @@
-.wrapper {
+.item-wrapper {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
   box-sizing: border-box;
   border: solid 2px transparent;
   background: #fff;
@@ -7,13 +11,13 @@
   border-radius: 5px;
 
   margin: 10px;
-  padding: 10px;
+  padding: 15px;
 
   min-width: 150px;
   min-height: 100px;
 }
 
-.wrapper::after {
+.item-wrapper::after {
   content: '';
   position: absolute;
   top: 0;
@@ -26,6 +30,12 @@
   background: linear-gradient(to bottom right, #ff00ff, #00ffff);
 }
 
+.item-wrapper a {
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+}
+
 .itemName {
   font-size: 18px;
   font-weight: 700;
@@ -35,4 +45,5 @@
 .itemCategory {
   font-size: 12px;
   font-style: italic;
+  margin-bottom: 10px;
 }

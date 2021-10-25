@@ -4,3 +4,31 @@
   justify-content: space-around;
   margin-top: 30px;
 }
+
+.closeButton {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  padding: 0 3px;
+  font-size: 10px;
+  font-weight: 800;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+
+.closeButton:hover {
+  color: red;
+  border: 2px solid red;
+  box-shadow: none;
+}
+
+.editButton {
+  position: relative;
+  padding: 1px;
+  border-radius: 5px;
+  background: linear-gradient(to bottom right, #ff00ff, #00ffff);
+}
+
+.editButton button {
+  width: 100%;
+}

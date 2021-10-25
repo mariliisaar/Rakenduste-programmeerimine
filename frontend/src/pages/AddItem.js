@@ -8,7 +8,7 @@ function AddItem() {
             headers: {
                 'Content-Type':'application/json'
             }
-        }).then(res => ( res.status === 200 ? window.location.href = 'http://localhost:3000/' : ''));
+        }).then(res => ( res.status === 200 ? window.location.href = 'http://localhost:3000/admin' : ''));
     }
 
     return(

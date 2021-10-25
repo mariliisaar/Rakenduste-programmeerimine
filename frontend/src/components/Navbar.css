@@ -28,22 +28,28 @@
     width: 96%;
     margin: 0 auto;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-items, .admin {
+    display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.nav-row a {
+.menu-items a, .admin a {
     padding: 0 10px;
     font-size: 18px;
     text-decoration: none;
     border: solid 2px transparent;
 }
 
-.nav-row a:link, .nav-row a:visited {
+.menu-items a:link, .menu-items a:visited, .admin a:link, .admin a:visited {
     color: #530e6e;
 }
 
-.nav-row a:hover, .nav-row a:active, .nav-row a:focus {
+.menu-items a:hover, .menu-items a:active, .menu-items a:focus, .admin a:hover, .admin a:active, .admin a:focus {
     cursor: pointer;
     color: #12a7a7;
     position: relative;
@@ -54,7 +60,7 @@
     border-radius: 5px 5px 0 0;
 }
 
-.nav-row a:hover::after, .nav-row a:active::after, .nav-row a:focus::after {
+.menu-items a:hover::after, .menu-items a:active::after, .menu-items a:focus::after, .admin a:hover::after, .admin a:active::after, .admin a:focus::after {
     content: '';
     position: absolute;
     top: 0;
@@ -67,12 +73,16 @@
     background: linear-gradient(to right, #ff00ff, #00ffff);
 }
 
-.nav-row a:first-child {
+.menu-items a:first-child {
     margin-left: -10px;
 }
 
-.nav-row a:last-child {
+.menu-items a:last-child {
     margin-right: -10px;
+}
+
+.admin a {
+    margin: 0 -10px;
 }
 
 .cart {

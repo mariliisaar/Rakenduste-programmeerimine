@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import ItemList from '../components/ItemList';
 
 function Home() {
@@ -10,7 +9,6 @@ function Home() {
         fetch('http://localhost:8080/items').then(res => {
             return res.json();
         }).then(data => {
-            console.log(data);
             setIsLoading(false);
             setLoadedItems(data);
         });
@@ -23,13 +21,7 @@ function Home() {
     return (
         <div className="main">
             <h1>Esemed</h1>
-            <div className="link">
-                <Link to="add-item">
-                    <img src="plus.svg" alt="add" />
-                    Lisa uus ese
-                </Link>
-            </div>
-            <ItemList items={loadedItems} />
+            <ItemList items={loadedItems} isAddToCart={true} />
         </div>
     )
 }
