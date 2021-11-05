@@ -1,4 +1,5 @@
 import { useContext, useRef, useState, useEffect } from "react"
+import { Typography, Input, Button, Table } from 'antd';
 import { Context } from "../store"
 import { addPost, removePost, updatePosts } from "../store/actions"
 
@@ -7,72 +8,102 @@ function Posts() {
   const [state, dispatch] = useContext(Context)
   const inputRef = useRef(null)
 
+  const { Title } = Typography
+  const cols = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+    },
+    {
+      title: 'Post',
+      dataIndex: 'title',
+      key: 'title',
+    },
+    {
+      title: 'Author',
+      dataIndex: 'authorId',
+      key: 'authorId',
+    },
+    {
+      title: 'Created At',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+    },
+    {
+      title: 'Last Modified',
+      dataIndex: 'lastModified',
+      key: 'lastModified',
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+        <Button key={record.id} type="link" onClick={() => dispatch(removePost(record.id))}>Delete</Button>
+      ),
+    },
+  ]
+
   // Ilma dependency massiivita - igal renderdusel
   // Tühja massiiviga [] - esimesel korral
   // Saab ka kutsuda teatud state muutustel välja [state] / [title] jne
   useEffect(() => {
-    dispatch(updatePosts([
-      {
-        id: 1,
-        title: "Test-prefetched-array-1"
-      },
-      {
-        id: 2,
-        title: "Test-prefetched-array-2"
-      },
-      {
-        id: 3,
-        title: "Test-prefetched-array-3"
-      },
-    ]))
-  }, [])
+    fetch('http://localhost:8081/api/post').then(res => {
+      return res.json();
+    }).then(async (data) => {
+      await dispatch(updatePosts(data))
+    })
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault()
+
+    const newPost = {
+      title,
+      authorId: state.auth.user.id,
+    }
 
     setTitle("")
 
-    addNewPost()
+    addNewPost(newPost)
 
     if (inputRef.current) inputRef.current.focus()
   }
 
-  const addNewPost = () => {
-    const newPost = {
-      id: Date.now(),
-      title // === title: title
-    }
+  const addNewPost = async (post) => {
+    const res = await fetch('http://localhost:8081/api/post/create', {
+    method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+        body: JSON.stringify(post),
+    })
 
-    // Save to database, if successful => dispatch and update locally
+    const returnData = await res.json()
 
-    dispatch(addPost(newPost))
+    dispatch(addPost(returnData))
   }
 
   return(
     <div style={{ textAlign: "center" }}>
-      <h1>Posts</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          ref={inputRef}
-          type="text"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-          autoFocus
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <Title>Posts</Title>
+      {state.auth.token &&
+        (
+          <form onSubmit={handleSubmit}>
+            <Input
+              style={{margin: '10px', maxWidth: '50%'}}
+              ref={inputRef}
+              type="text"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+              autoFocus
+            />
+            <Button htmlType="submit" type="primary">Submit</Button>
+          </form>
+        )
+      }
 
-        { state.posts.data.map((element, index) => 
-          <li key={element.id}>
-            {index + 1}. {element.id} {element.title}
-            <span
-              style={{cursor: "pointer"}}
-              onClick={() => dispatch(removePost(element.id))}
-            >
-                &#128540;
-            </span>
-          </li>
-        )}
+      <Table columns={cols} dataSource={state.posts.data} rowKey='id' />
     </div>
   )
 }

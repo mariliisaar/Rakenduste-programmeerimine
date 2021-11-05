@@ -22,6 +22,9 @@ public class Category {
     private Long id;
     private String name;
     private CategoryType category;
+    public String getName() {
+      return name;
+    }
 }
 
 enum CategoryType {

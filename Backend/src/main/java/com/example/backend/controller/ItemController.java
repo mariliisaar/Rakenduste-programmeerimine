@@ -21,6 +21,7 @@ public class ItemController {
 
     @PostMapping("items")
     public void postItem(@RequestBody Item item) { // Nõuab body ja mis tüübiks ta selle body teeb
+        System.out.println(item);
         itemService.saveItem(item);
     }
 

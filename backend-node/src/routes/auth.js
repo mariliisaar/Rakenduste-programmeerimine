@@ -7,34 +7,34 @@ router.post("/login", [
   check("email")
     .isEmail()
     .normalizeEmail()
-    .withMessage("Must be correctly formatted email"),
+    .withMessage("must be correctly formatted"),
   check("password")
     .isLength({ min: 6 })
-    .withMessage("Must be at least 6 characters long"),
+    .withMessage("must be at least 6 characters long"),
 ], validationMiddleware, authController.login)
 
 router.post("/signup", [
   check("firstName")
     .isLength({ min: 3 })
-    .withMessage("Must be at least 3 characters long")
+    .withMessage("must be at least 3 characters long")
     .trim()
     .exists()
     .matches(/^[A-ZÕÄÖÜa-zõäöü]+$/)
-    .withMessage("Must be alphabetic"),
+    .withMessage("must be alphabetic"),
   check("lastName")
     .isLength({ min: 3 })
-    .withMessage("Must be at least 3 characters long")
+    .withMessage("must be at least 3 characters long")
     .trim()
     .exists()
     .matches(/^[A-ZÕÄÖÜa-zõäöü]+$/)
-    .withMessage("Must be alphabetic"),
+    .withMessage("must be alphabetic"),
   check("email")
     .isEmail()
     .normalizeEmail()
-    .withMessage("Must be correctly formatted e-mail"),
+    .withMessage("must be correctly formatted"),
     check("password")
       .isLength({ min: 6 })
-      .withMessage("Must be at least 6 characters long"),
+      .withMessage("must be at least 6 characters long"),
 ], validationMiddleware, authController.signup)
 
 module.exports = router
